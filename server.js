@@ -26,13 +26,13 @@ app.use(express.json()); // Enable JSON body parsing
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from 'public' folder
 
 const connection = new Connection(
-  'https://solana-mainnet.api.syndica.io/api-key/API_KEY_HERE',
+  'https://solana-mainnet.api.syndica.io/api-key/API_KEY_HERE', // TODO: Replace with your Syndica API key
   'confirmed'
 );
 
 // 4. Configuration
-const BOT_TOKEN = ""; // Telegram bot token
-const CHAT_ID = ""; // Telegram chat ID
+const BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"; // TODO: Replace with your Telegram bot token
+const CHAT_ID = "YOUR_TELEGRAM_CHAT_ID"; // TODO: Replace with your Telegram chat ID
 const PRICE_CACHE_DURATION = 30 * 60 * 1000; // Cache SOL price for 30 minutes
 let cachedSolPrice = null; // Cached SOL price
 let lastPriceUpdate = 0; // Timestamp of last price update

